@@ -1,6 +1,7 @@
 import { NgRedux, select } from '@angular-redux/store';
 import { Component, OnInit } from '@angular/core';
 import { REMOVE_ALL_TODOS } from '../action';
+import { ITodo } from '../interfaces/todo';
 import { IAppState } from '../store';
 
 @Component({

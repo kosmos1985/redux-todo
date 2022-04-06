@@ -1,5 +1,5 @@
 <h6>Create Todo</h6>
-<form (onSubmit)="onSubmit()" #todoForm="ngForm">
+<form (ngSubmit)="onSubmit()" #todoForm="ngForm">
   <div class="form-row">
     <div class="col-auto">
       <input
@@ -24,7 +24,7 @@
       />
     </div>
     <div class="col-auto">
-        <label for="priority">Priority</label>
+      <label for="priority">Priority</label>
       <select
         name="priority"
         id="priority"
@@ -43,3 +43,35 @@
     </div>
   </div>
 </form>
+<br />
+<h6>Todos List:</h6>
+<div *ngIf="todos.length != 0">
+  <table class="table">
+    <thead class="thead-inverse">
+      <tr>
+        <th>#</th>
+        <th>Todo Desctription</th>
+        <th>Responsible</th>
+        <th>Priority</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let todo of todos | async">
+        <td>
+          <span>{{ todo.id }}</span>
+        </td>
+        <td>
+          <span>{{ todo.description }}</span>
+        </td>
+        <td>
+          <span>{{ todo.responsible }}</span>
+        </td>
+        <td>
+          <span>{{ todo.priority }}</span>
+        </td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

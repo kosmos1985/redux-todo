@@ -16,7 +16,7 @@ export class TodoListComponent implements OnInit {
     id: 0,
     description: "",
     responsible:"",
-    priority:"",
+    priority:"low",
     isCompleted: false
   }
 
@@ -29,11 +29,11 @@ export class TodoListComponent implements OnInit {
     this.ngRedux.dispatch({type: ADD_TODO, todo: this.model});
   }
 
-  toogleTodo(todo: { id: number; }){
+  toogleTodo(todo: { id: any; }){
     this.ngRedux.dispatch({type: TOGGLE_TODO, id: todo.id});
   }
 
-  removeTodo(todo: { id: number; }){
+  removeTodo(todo: { id: any; }){
     this.ngRedux.dispatch({type: REMOVE_TODO, id: todo.id});
   }
 
