@@ -20,7 +20,7 @@ export function rootReducer(state: any, action: any) {
         lastUpdate: new Date(),
       });
     case TOGGLE_TODO:
-      let todo = state.todos.find((todo: { id: any }) => todo.id === action.id);
+      let todo = state.todos.find((todo: { id: number }) => todo.id === action.id);
       let index = state.todos.indexOf(todo);
       return Object.assign({}, state, {
         todos: [
@@ -33,7 +33,7 @@ export function rootReducer(state: any, action: any) {
 
     case REMOVE_TODO:
       return Object.assign({}, state, {
-        todos: state.todos.filter((todo: { id: any }) => todo.id !== action.id),
+        todos: state.todos.filter((todo: { id: number }) => todo.id !== action.id),
         lastUpdate: new Date(),
       });
 
