@@ -59,18 +59,45 @@
     <tbody>
       <tr *ngFor="let todo of todos | async">
         <td>
-          <span>{{ todo.id }}</span>
+          <span
+            class="pointer"
+            (click)="toggleTodo(todo)"
+            [class.completed]="todo.isCompleted"
+            >{{ todo.id }}</span
+          >
         </td>
         <td>
-          <span>{{ todo.description }}</span>
+          <span
+            class="pointer"
+            (click)="toggleTodo(todo)"
+            [class.completed]="todo.isCompleted"
+            >{{ todo.description }}</span
+          >
         </td>
         <td>
-          <span>{{ todo.responsible }}</span>
+          <span
+            class="pointer"
+            (click)="toggleTodo(todo)"
+            [class.completed]="todo.isCompleted"
+            >{{ todo.responsible }}</span
+          >
         </td>
         <td>
-          <span>{{ todo.priority }}</span>
+          <span *ngIf="todo.priority == 'low'" class="badge bg-success">{{
+            todo.priority
+          }}</span>
+          <span *ngIf="todo.priority == 'medium'" class="badge bg-warning">{{
+            todo.priority
+          }}</span>
+          <span *ngIf="todo.priority == 'high'" class="badge bg-danger">{{
+            todo.priority
+          }}</span>
         </td>
-        <td></td>
+        <td>
+          <button class="btn btn-danger" (click)="removeTodo(todo)">
+            Delete
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>

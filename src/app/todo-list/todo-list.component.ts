@@ -29,7 +29,7 @@ export class TodoListComponent implements OnInit {
     this.ngRedux.dispatch({type: ADD_TODO, todo: this.model});
   }
 
-  toogleTodo(todo: { id: any; }){
+  toggleTodo(todo: { id: any; }){
     this.ngRedux.dispatch({type: TOGGLE_TODO, id: todo.id});
   }
 

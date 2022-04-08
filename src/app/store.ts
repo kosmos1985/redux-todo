@@ -25,7 +25,7 @@ export function rootReducer(state: any, action: any) {
       return Object.assign({}, state, {
         todos: [
           ...state.todos.slice(0, index),
-          Object.assign({}, state, { isComplited: !todo.isComplited }),
+          Object.assign({}, todo, { isCompleted: !todo.isCompleted }),
           ...state.todos.slice(index + 1),
         ],
         lastUpdate: new Date(),
