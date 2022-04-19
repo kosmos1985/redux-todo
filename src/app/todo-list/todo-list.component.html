@@ -9,7 +9,7 @@
         id="description"
         [(ngModel)]="model.description"
         name="description"
-        #desctription="ngModel"
+        required
       />
     </div>
     <div class="col-auto">
@@ -20,18 +20,16 @@
         id="responsible"
         [(ngModel)]="model.responsible"
         name="responsible"
-        #responsible="ngModel"
+        required
       />
     </div>
     <div class="col-auto">
       <label for="priority">Priority</label>
       <select
-        name="priority"
         id="priority"
         class="form-control"
         [(ngModel)]="model.priority"
         name="priority"
-        #priority="ngModel"
       >
         <option value="low">Low</option>
         <option value="medium">Medium</option>
@@ -39,13 +37,19 @@
       </select>
     </div>
     <div class="col-auto">
-      <button type="submit" class="btn btn-primary">Create</button>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!todoForm.valid"
+      >
+        Create
+      </button>
     </div>
   </div>
 </form>
 <br />
 <h6>Todos List:</h6>
-<div *ngIf="todos.length != 0">
+<div *ngIf="todoForm.valid">
   <table class="table">
     <thead class="thead-inverse">
       <tr>
