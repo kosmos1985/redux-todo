@@ -10,22 +10,13 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    TodoOverviewComponent,
-    TodoListComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    NgReduxModule,
-  ],
+  declarations: [AppComponent, TodoOverviewComponent, TodoListComponent],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, NgReduxModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { 
-  constructor(ngRedux: NgRedux<IAppState>){
+export class AppModule {
+  constructor(ngRedux: NgRedux<IAppState>) {
     ngRedux.configureStore(rootReducer, INITIAL_STATE);
   }
 }

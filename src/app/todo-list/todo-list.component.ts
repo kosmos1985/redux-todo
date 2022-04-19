@@ -7,34 +7,32 @@ import { IAppState } from '../store';
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
-  styleUrls: ['./todo-list.component.scss']
+  styleUrls: ['./todo-list.component.scss'],
 })
 export class TodoListComponent implements OnInit {
   @select() todos: any;
 
   model: ITodo = {
     id: 0,
-    description: "",
-    responsible:"",
-    priority:"low",
-    isCompleted: false
+    description: '',
+    responsible: '',
+    priority: 'low',
+    isCompleted: false,
+  };
+
+  constructor(private ngRedux: NgRedux<IAppState>) {}
+
+  ngOnInit(): void {}
+
+  onSubmit() {
+    this.ngRedux.dispatch({ type: ADD_TODO, todo: this.model });
   }
 
-  constructor(private ngRedux: NgRedux<IAppState>) { }
-
-  ngOnInit(): void {
+  toggleTodo(todo: { id: any }) {
+    this.ngRedux.dispatch({ type: TOGGLE_TODO, id: todo.id });
   }
 
-  onSubmit(){
-    this.ngRedux.dispatch({type: ADD_TODO, todo: this.model});
+  removeTodo(todo: { id: any }) {
+    this.ngRedux.dispatch({ type: REMOVE_TODO, id: todo.id });
   }
-
-  toggleTodo(todo: { id: any; }){
-    this.ngRedux.dispatch({type: TOGGLE_TODO, id: todo.id});
-  }
-
-  removeTodo(todo: { id: any; }){
-    this.ngRedux.dispatch({type: REMOVE_TODO, id: todo.id});
-  }
-
 }
